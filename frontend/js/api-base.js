@@ -1,7 +1,7 @@
 (function () {
   const STORAGE_KEY = "pulsemind_api_base";
   const DEFAULT_LOCAL = "http://127.0.0.1:3000";
-  const API_BASE_OVERRIDE = "https://<backend>.onrender.com";
+  const API_BASE_OVERRIDE = "https://pulsemind.onrender.com";
   // Override order: constant, window, meta tag, localStorage, then origin fallback.
 
   function normalize(value) {
