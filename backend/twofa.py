@@ -146,7 +146,10 @@ def _send_2fa_email_elastic(to_email: str, code: str) -> bool:
                 try:
                     parsed = json.loads(body)
                     if "success" in parsed:
-                        return bool(parsed.get("success"))
+                        if parsed.get("success"):
+                            return True
+                        print("❌ ElasticEmail error:", parsed.get("error") or parsed)
+                        return False
                 except Exception:
                     pass
                 return True
