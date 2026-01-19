@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const statusEl = document.getElementById('status');
     const deviceKeyOutput = document.getElementById('device-key-output');
     const savedDeviceKey = localStorage.getItem('pulsemind_device_key');
+    const API_BASE = (typeof getPulseMindApiBase === 'function')
+        ? getPulseMindApiBase()
+        : (window.location.origin && window.location.origin !== 'null'
+            ? window.location.origin
+            : 'http://127.0.0.1:3000');
 
     function showStatus(message, type = 'info') {
         if (!message) return;
@@ -31,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!token) {
             throw new Error('missing token');
         }
-        const response = await fetch('http://127.0.0.1:3000/api/auth/me', {
+        const response = await fetch(`${API_BASE}/api/auth/me`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

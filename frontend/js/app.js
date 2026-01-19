@@ -1,10 +1,8 @@
-// To point to a different backend, change API_BASE below.
-const API_BASE = (window.location.origin && (
-    window.location.origin.includes(':3000')
-    || window.location.origin.endsWith('.onrender.com')
-))
-    ? window.location.origin
-    : 'http://10.166.0.154:3000';
+const API_BASE = (typeof getPulseMindApiBase === "function")
+    ? getPulseMindApiBase()
+    : (window.location.origin && window.location.origin !== "null"
+        ? window.location.origin
+        : "http://127.0.0.1:3000");
 const TOKEN_KEY = 'pulsemind_token';
 
 let statusEl = null;

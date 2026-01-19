@@ -7,3 +7,4 @@ pyjwt
 psycopg2-binary
 portkey-ai
 bcrypt
+gunicorn

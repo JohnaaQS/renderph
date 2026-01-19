@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE = "http://127.0.0.1:3000";
+  const API_BASE = (typeof getPulseMindApiBase === "function")
+    ? getPulseMindApiBase()
+    : (window.location.origin && window.location.origin !== "null"
+      ? window.location.origin
+      : "http://127.0.0.1:3000");
   const TOKEN_KEY = "pulsemind_token";
 
   const statusEl = document.getElementById("debug-status");

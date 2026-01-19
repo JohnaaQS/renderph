@@ -1,5 +1,7 @@
 #include <WiFiS3.h>
 
+#define USE_SSL 1  // Render uses HTTPS
+
 //////////////////////////////////////////////////////////
 // WIFI CONFIG
 //////////////////////////////////////////////////////////
@@ -9,15 +11,19 @@ char pass[] = "uezw6075";
 //////////////////////////////////////////////////////////
 // SERVER CONFIG (Flask backend)
 //////////////////////////////////////////////////////////
-char server[] = "10.166.0.154";   // IP van je laptop op hotspot
-int port = 3000;
+char server[] = "your-service.onrender.com";  // Render backend domain
+#if USE_SSL
+const int port = 443;
+WiFiSSLClient client;
+#else
+const int port = 3000;
+WiFiClient client;
+#endif
 
 //////////////////////////////////////////////////////////
 // DEVICE KEY (from /api/auth/register)
 //////////////////////////////////////////////////////////
 const char DEVICE_KEY[] = "NwINRyykhA_m58AFC1Rq7U9GjbtKO3vKs57Id0Qy7eA";
-
-WiFiClient client;
 
 unsigned long lastSendMs = 0;
 const unsigned long SEND_INTERVAL_MS = 5000;
