@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory, abort
 from dotenv import load_dotenv
 from pathlib import Path
 from flask_cors import CORS
@@ -17,6 +17,7 @@ from routes.debug_routes import bp as debug_bp
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
+FRONTEND_DIR = BASE_DIR.parent / "frontend"
 
 def create_app():
     app = Flask(__name__)
@@ -52,7 +53,14 @@ def create_app():
 
     @app.route("/")
     def index():
-        return jsonify({"status": "ok", "message": "PulseMind backend draait"})
+        return send_from_directory(FRONTEND_DIR, "signup.html")
+
+    @app.route("/<path:filename>")
+    def frontend_files(filename):
+        file_path = FRONTEND_DIR / filename
+        if not file_path.is_file():
+            abort(404)
+        return send_from_directory(FRONTEND_DIR, filename)
 
     @app.route("/dev/init-db", methods=["POST"])
     def init_db():
