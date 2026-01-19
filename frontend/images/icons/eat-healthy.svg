@@ -1,0 +1,17 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_eat_healthy_16)">
+    <path d="M9.1 3.9C9.6 2.6 10.9 2.1 12.1 2.4C11.7 3.8 10.4 4.5 9.1 4.4"
+      stroke="#A3A7AD" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 4.7V3.6"
+      stroke="#A3A7AD" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 5.1C7.1 4.2 5.6 4.1 4.8 5.1C3.9 6.3 4.4 7.9 5.3 8.7C4.3 9.2 3.9 10.4 4.6 11.7C5.5 13.3 6.9 14.2 8 14.2C9.1 14.2 10.5 13.3 11.4 11.7C12.1 10.4 11.7 9.2 10.7 8.7C11.6 7.9 12.1 6.3 11.2 5.1C10.4 4.1 8.9 4.2 8 5.1Z"
+      stroke="#A3A7AD" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.2 10.2L7.3 11.3L9.8 8.8"
+      stroke="#A3A7AD" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_eat_healthy_16">
+      <rect width="16" height="16" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

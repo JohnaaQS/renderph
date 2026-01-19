@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseMind – Daily Check-in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checklist.css">
+    
+
+</head>
+
+<body>
+<!--Header-->
+<header class="header">
+    <a href="dashboard.html" class="logo" aria-label="Go to dashboard">
+        <img
+            src="images/icons/PulseMind.png"
+            alt="PulseMind logo"
+            class="logo-icon"
+        >
+    </a>
+
+
+
+    <!-- Navigatiemenu -->
+    <nav class="nav">
+      <!-- Actieve pagina: Dashboard -->
+      <a href="dashboard.html" class="nav-btn active">
+        <img src="images/icons/icon-dashboard.svg" alt="">
+        Dashboard
+      </a>
+
+      <!-- Link naar dagelijkse check-in -->
+      <a href="checklist.html" class="nav-btn">
+        <img src="images/icons/icon-daily_check_in.svg" alt="">
+        Daily Check-in
+      </a>
+
+      <!-- Link naar profielpagina -->
+      <a href="account.html" class="nav-btn">
+        <img src="images/icons/icon-profile.svg" alt="">
+        Profile
+      </a>
+    </nav>
+  </header>
+
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- week preview -->
+    <div class="week-preview">
+        <div class="week-day" data-day="Mo">
+            <span class="day-label">Mo</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Tu">
+            <span class="day-label">Tu</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="We">
+            <span class="day-label">We</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Th">
+            <span class="day-label">Th</span>
+            <div class="emoji-wrapper mood-heel-goed active">
+                <img src="images/emoji/heel_goed_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Fr">
+            <span class="day-label">Fr</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Sa">
+            <span class="day-label">Sa</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Su">
+            <span class="day-label">Su</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- check-in card -->
+    <div class="checklist-card">
+
+
+<!-- DATE PICKER -->
+<div class="date-picker">
+    <label class="date-input" for="date-field">
+
+ 
+        <img
+            src="images/icons/calendar.svg"
+            alt="Calendar"
+            class="calendar-icon left"
+        >
+
+    
+        <span class="date-display">Select date</span>
+        <input type="date" id="date-field">
+        
+
+
+      
+        <svg
+            class="calendar-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 12 7"
+            fill="none"
+        >
+            <path
+                d="M0.833313 0.833344L5.83331 5.83334L10.8333 0.833344"
+                stroke="#A3A7AD"
+                stroke-width="1.66667"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+
+    </label>
+</div>
+
+
+
+
+     <!-- MOOD -->
+<div class="mood-slider">
+    
+    <div class="section-header">
+        <h3 class="mood-title">How are you feeling?</h3>
+        <p class="mood-subtitle">
+            Be honest with yourself, there are no wrong answers.
+        </p>
+    </div>
+
+
+
+    <div class="mood-track">
+        <img class="mood-emoji" src="images/emoji/neutraal_face.png" alt="">
+        <div class="mood-track-bar"></div>
+        <input type="range" min="0" max="4" value="2" class="mood-range">
+    </div>
+
+    <div class="mood-labels">
+        <span class="mood-label awful">Awful</span>
+        <span class="mood-label amazing">Amazing</span>
+    </div>
+
+</div>
+
+
+        <!-- ACTIVITIES -->
+        <div class="activities-section">
+            <div class="activities-header">
+                <h3 class="mood-title">What have you been up to</h3>
+                <p class="mood-subtitle">Tracking your activities helps you see what triggers your stress</p>
+            </div>
+            <div class="activities-list"> 
+                <button class="activity-btn btn">
+                    <img src="images/icons/family.svg" alt="Family icon">
+                    <span>Family</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/friends.svg" alt="Friends icon">
+                    <span>Friends</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/date.svg" alt="Date icon">
+                    <span>Date</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/exercise.svg" alt="Exercise icon">
+                    <span>Exercise</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/sport.svg" alt="Sport icon">
+                    <span>Sport</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/relax.svg" alt="Relax icon">
+                    <span>Relax</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/movies.svg" alt="Movies icon">
+                    <span>Movies</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/gaming.svg" alt="Gaming icon">
+                    <span>Gaming</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/reading.svg" alt="Reading icon">
+                    <span>Reading</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/cleaning.svg" alt="Cleaning icon">
+                    <span>Cleaning</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/sleep-early.svg" alt="Sleep early icon">
+                    <span>Sleep early</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/eat-healthy.svg" alt="Eat healthy icon">
+                    <span>Eat healthy</span>
+                </button>
+
+                <button class="activity-btn btn">
+                    <img src="images/icons/shopping.svg" alt="Shopping icon">
+                    <span>Shopping</span>
+                </button>
+            </div>  
+
+<div class="mood-slider sleep-slider">
+
+  <h3 class="mood-title">Last night sleep</h3>
+  <p class="mood-subtitle">
+    How many hours did you sleep last night?
+  </p>
+
+  <div class="mood-track">
+    <div class="sleep-bubble" id="sleepBubble">7h</div>
+
+
+    <div class="mood-track-bar-sleep sleep-track"></div>
+
+    <input
+      type="range"
+      min="2"
+      max="12"
+      step="0.5"
+      value="7"
+      class="mood-range"
+      id="sleepRange"
+    >
+  </div>
+
+  <div class="mood-labels">
+    <span>2h</span>
+
+    <span>12h</span>
+  </div>
+
+</div>
+  
+        
+
+        <!-- NOTE -->
+        <div class="notes-field">
+            <div class="note-title">
+                <h3 class="mood-title">Daily note</h3>
+            </div>
+
+            <textarea placeholder="Optional: Add a quick note..."></textarea>
+        </div>
+
+        <p class="checklist-status" id="checklist-status" style="display: none;"></p>
+
+        <!-- CTA -->
+        <button class="continue-btn btn">
+            Continue to Measurements
+        </button>
+
+    </div>
+</div>
+<!-- GLOBAL MODAL -->
+<div class="modal-overlay hidden" id="modalOverlay">
+  <div class="modal">
+
+    <div class="modal-icon success" id="modalIcon">✓</div>
+
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <p class="modal-text" id="modalText"></p>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="modalConfirm">OK</button>
+      <button class="btn btn-secondary" id="modalCancel">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/checklist.js" defer></script>
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+flask
+flask-cors
+flask_sqlalchemy
+python-dotenv
+werkzeug
+pyjwt
+psycopg2-binary
+portkey-ai
+bcrypt

@@ -1,0 +1,810 @@
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.header {
+    background: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 171px;
+    height: 32px;
+    display: block;
+}
+
+
+
+/* =====================================================
+   CHECKLIST – DAILY CHECK-IN
+   ===================================================== */
+
+/* ---------- Week Preview ---------- */
+.week-preview {
+    width: 100%;
+    max-width: 576px;
+    padding: 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+
+    border-radius: 12px;
+    border: 1px solid #E9EAEB;
+    background: #FFFFFF;
+}
+
+.week-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.day-label {
+    color: #535862;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+/* ---------- Emoji ---------- */
+.emoji-wrapper {
+    display: flex;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50px;
+}
+
+.emoji-wrapper img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Empty */
+/* Empty / dotted */
+.emoji-wrapper.empty {
+    border: 1px dashed #D0D5DD;
+    background: transparent;
+}
+
+
+.emoji-wrapper.empty img {
+    opacity: 0.6;
+    mix-blend-mode: luminosity;
+}
+
+/* States */
+.emoji-wrapper.mood-heel-slecht {
+    border: 1px solid rgba(240, 68, 56, 0.50);
+    background: linear-gradient(0deg, rgba(240,68,56,.20), rgba(240,68,56,.10));
+}
+
+.emoji-wrapper.mood-slecht {
+    border: 1px solid rgba(247, 144, 9, 0.50);
+    background: linear-gradient(0deg, rgba(247,144,9,.20), rgba(247,144,9,.10));
+}
+
+.emoji-wrapper.mood-neutraal {
+    border: 1px solid rgba(234, 170, 8, 0.50);
+    background: linear-gradient(0deg, rgba(234,170,8,.20), rgba(234,170,8,.10));
+}
+
+.emoji-wrapper.mood-goed {
+    border: 1px solid rgba(102, 159, 42, 0.50);
+    background: linear-gradient(0deg, rgba(102,159,42,.20), rgba(102,159,42,.10));
+}
+
+.emoji-wrapper.mood-heel-goed {
+    border: 1px solid rgba(7, 148, 85, 0.50);
+    background: linear-gradient(180deg, rgba(7,148,85,.10), rgba(7,148,85,.20));
+}
+
+/* Active day */
+.emoji-wrapper.active {
+    box-shadow: 0 0 0 3px rgba(195, 188, 206, 0.25);
+}
+
+
+
+/* ---------- Date Picker ---------- */
+
+.date-picker {
+    margin-bottom: 24px;
+
+}
+
+.date-input {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+    border: 1px solid #D5D7DA;
+    background: #FDFDFD;
+    cursor: pointer;
+}
+
+
+.calendar-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+.date-input input[type="date"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+
+.date-input input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+}
+
+
+.date-display {
+    flex: 1;
+
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #181D27;
+}
+
+
+.calendar-arrow {
+    width: 10px;
+    height: 5px;
+    display: block;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.date-input .calendar-icon,
+.date-input .date-display {
+    pointer-events: none;
+}
+
+
+/* ---------- Card ---------- */
+.checklist-card {
+    width: 100%;
+    max-width: 576px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 12px;
+    border: 1px solid #E9EAEB;
+    background: #FFFFFF;
+}   
+
+.checklist-status {
+    display: none;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #E4E7EC;
+    background: #F8FAFC;
+    color: #344054;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.checklist-status[data-state="error"] {
+    border-color: #FECDCA;
+    background: #FEF3F2;
+    color: #B42318;
+}
+
+.checklist-status[data-state="success"] {
+    border-color: #ABEFC6;
+    background: #ECFDF3;
+    color: #067647;
+}
+
+/* ---------- Mood Text ---------- */
+
+.mood-title {
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #181D27;
+
+    margin: 0;
+}
+
+.mood-subtitle {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #535862;
+
+    margin: 0;
+}
+
+.mood-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -8px;
+}
+
+.mood-label {
+    flex: 1 0 0;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.mood-label.awful {
+    color: #D92D20;
+    text-align: left;
+}
+
+.mood-label.amazing {
+    color: #079455;
+    text-align: right;
+}
+
+/* ---------- Mood Slider ---------- */
+.mood-slider {
+    margin-bottom: 32px;
+}
+
+.mood-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.mood-track {
+    position: relative;
+    padding-top: 8px;
+    
+    
+
+}
+
+.mood-range {
+    width: 100%;
+    margin : 0;
+}
+
+.mood-emoji {
+    width: 45px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(calc(-50% + 6px));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px;
+    flex-direction: column;
+    gap: 10px;
+
+    border-radius: 50px;
+    border: 1px solid #D6D8DB;
+    background: #FAFAFA;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10);
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+.mood-range {
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 56px;  
+    width: 100%;
+    background: transparent;
+    margin: 0;
+}
+.mood-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+}
+
+.mood-range::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    border: none;
+}
+
+
+/* ---------- Activities ---------- */
+.activities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #D6D8DB;
+  background: #FAFAFA;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #424752;
+
+  cursor: pointer;
+}
+
+.activity-btn img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.activity-btn.active {
+  border-radius: 6px;
+  border: 1px solid rgba(214, 187, 251, 0.50);
+  background: #7F56D9;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+
+}
+
+.activity-btn.active img {
+  filter: brightness(0) invert(1);
+}
+
+.activity-btn.active img {
+  filter: brightness(0) 
+          invert(74%) 
+          sepia(26%) 
+          saturate(1030%) 
+          hue-rotate(213deg) 
+          brightness(100%) 
+          contrast(88%);
+}
+
+.activities-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+
+.activities-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.activities-list {
+    margin-top: 16px; 
+}
+
+
+/* ---------- Notes ---------- */
+.notes-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+textarea {
+    min-height: 96px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    padding: 12px;
+    font-family: inherit;
+}
+
+
+
+/* ---------- Mood Gradient Track (visual only) ---------- */
+
+.mood-track-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    top: calc(50% + 8px); 
+    
+    height: 8px;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        #F04438 0%,
+        #F79009 25%,
+        #EAAA08 50%,
+        #669F2A 75%,
+        #079455 100%
+    );
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+.mood-track-bar-sleep {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    top: calc(50% + 8px);
+    
+    height: 8px;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        90deg,
+        #278ce4 100%
+    );
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+.notes-field {
+    margin-top: 24px; 
+}
+
+/* ---------- Notes ---------- */
+.notes-field {
+    margin-top: 24px;           
+    display: flex;
+    flex-direction: column;
+    gap: 8px;                   
+}
+
+
+.notes-field textarea {
+    width: 100%;
+    min-height: 120px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+    border: 1px solid #D6D8DB;
+    background: #FAFAFA;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #111827;
+
+    resize: none;
+    outline: none;
+}
+
+/* placeholder */
+.notes-field textarea::placeholder {
+    color: #9CA3AF;
+}
+
+.notes-field {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    align-self: stretch; 
+}
+
+/* optional: focus state */
+.notes-field textarea:focus {
+    border-color: #7F56D9;
+    background: #FFFFFF;
+}
+
+
+.continue-btn {
+    margin-top: 32px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    padding: 12px 18px;
+    width: 100%;              
+    align-self: stretch;      
+
+    border-radius: 6px;
+    background: #7F56D9;
+
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #FFFFFF;
+
+    border: none;
+    cursor: pointer;
+}
+
+.sleep-bubble {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid #D6D8DB;
+  background: #FAFAFA;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10);
+
+
+  color: #181D27;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, calc(-50% + 6px));
+  pointer-events: none;
+  z-index: 3;
+}
+
+
+
+.sleep-slider{
+  width: 100%;
+  margin-top: 62px; 
+}
+
+
+
+.sleep-slider .mood-track{
+  width: 100%;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ==============================
+   MODAL OVERLAY + BLUR
+   ============================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(24, 29, 39, 0.45);
+
+  /* Blur background */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+/* ==============================
+   MODAL CARD
+   ============================== */
+
+.modal {
+  display: flex;
+  width: 416px;
+  padding: 24px;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+ 
+
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==============================
+   MODAL ICON
+   ============================== */
+
+.modal-icon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.modal-icon.success {
+  background: #ECFDF3;
+  color: #039855;
+}
+
+.modal-icon.warning {
+  background: #FFFAEB;
+  color: #DC6803;
+}
+
+/* ==============================
+   MODAL TITLE
+   ============================== */
+
+.modal-title {
+  color: #181D27;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 155.556% */
+  margin: 0;
+}
+
+/* ==============================
+   MODAL TEXT
+   ============================== */
+
+.modal-text {
+  color: #535862;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; 
+  margin-top: -16px;     
+  margin-bottom: 0;
+}
+
+/* ==============================
+   MODAL ACTIONS
+   ============================== */
+
+.modal-actions {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ==============================
+   PRIMARY BUTTON
+   ============================== */
+
+.btn-primary {
+  display: flex;
+  padding: 12px 18px;
+  width: 100%;     
+
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+
+  border-radius: 6px;
+  background: #7F56D9;
+
+  color: #FFFFFF;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #6941C6;
+}
+
+.btn-primary:active {
+  background: #5B2EBE;
+}
+
+/* ==============================
+   SECONDARY BUTTON
+   ============================== */
+
+.btn-secondary {
+  display: flex;
+  padding: 12px 18px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  align-self: stretch;
+
+  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid #D5D7DA;
+
+  color: #344054;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #F9FAFB;
+}

@@ -1,0 +1,38 @@
+-- ============================================
+-- INSERT USERS
+-- ============================================
+
+INSERT INTO users (first_name, last_name, username, email, password_hash, date_of_birth, leeftijd, geslacht, lengte_cm, gewicht_kg, levensstijl)
+VALUES
+('Alice', 'Jansen', 'alice01', 'alice01@example.com', 'hashed_password1', '1998-04-15', 25, 'vrouw', 165, 60.5, 'matig actief'),
+('Bob', 'Bakker', 'bob99', 'bob99@example.com', 'hashed_password2', '1992-10-03', 32, 'man', 180, 85.0, 'actief'),
+('Carol', 'Visser', 'carol77', 'carol77@example.com', 'hashed_password3', '1996-01-22', 28, 'vrouw', 170, 68.2, 'sedentair'),
+('Dave', 'Smit', 'dave88', 'dave88@example.com', 'hashed_password4', '1984-05-30', 40, 'man', 175, 90.0, 'matig actief'),
+('Eve', 'de Vries', 'eve55', 'eve55@example.com', 'hashed_password5', '2002-09-10', 22, 'vrouw', 160, 55.0, 'actief');
+
+-- ============================================
+-- INSERT ARDUINO MEASUREMENTS
+-- ============================================
+
+-- Example measurements for each user at different times
+INSERT INTO arduino_measurements (user_id, temperatuur_c, hartslag_bpm, hrv_ms, gsr, timestamp)
+VALUES
+(1, 36.7, 72, 60, 450, NOW() - INTERVAL '2 hours'),
+(1, 36.8, 75, 58, 470, NOW() - INTERVAL '1 hour'),
+(2, 37.0, 80, 55, 500, NOW() - INTERVAL '3 hours'),
+(3, 36.5, 68, 65, 430, NOW() - INTERVAL '4 hours'),
+(4, 37.2, 85, 50, 520, NOW() - INTERVAL '1 hour'),
+(5, 36.6, 70, 62, 440, NOW() - INTERVAL '30 minutes');
+
+-- ============================================
+-- INSERT DAILY LOGS
+-- ============================================
+
+-- Example daily logs for users
+INSERT INTO daily_logs (user_id, uren_geslapen, gevoel, date)
+VALUES
+(1, 7.5, 'goed', CURRENT_DATE),
+(2, 6.0, 'neutraal', CURRENT_DATE),
+(3, 8.0, 'heel goed', CURRENT_DATE),
+(4, 5.5, 'slecht', CURRENT_DATE),
+(5, 7.0, 'goed', CURRENT_DATE);

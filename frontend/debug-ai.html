@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseMind - AI Debug</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/debug-ai.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+    </div>
+    <nav class="nav">
+      <a href="dashboard.html" class="nav-btn">
+        <img src="images/icons/icon-dashboard.svg" alt="">
+        Dashboard
+      </a>
+      <a href="checklist.html" class="nav-btn">
+        <img src="images/icons/icon-daily_check_in.svg" alt="">
+        Daily Check-in
+      </a>
+      <a href="account.html" class="nav-btn">
+        <img src="images/icons/icon-profile.svg" alt="">
+        Profile
+      </a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-content">
+      <section class="card card--lg debug-card">
+        <div class="debug-header">
+          <div>
+            <h2 class="debug-title">AI Debug</h2>
+            <p class="debug-subtitle">Bekijk wat de API gebruikt en wat het teruggeeft.</p>
+          </div>
+          <button type="button" class="primary-btn" id="debug-refresh-btn">
+            Refresh
+          </button>
+        </div>
+
+        <p class="ai-advice-status" id="debug-status" style="display: none;"></p>
+
+        <div class="debug-grid">
+          <div class="debug-panel">
+            <h3>Input</h3>
+            <pre id="debug-input" class="debug-pre">Nog geen data.</pre>
+          </div>
+          <div class="debug-panel">
+            <h3>Analyse output</h3>
+            <pre id="debug-output" class="debug-pre">Nog geen data.</pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/debug-ai.js" defer></script>
+</body>
+</html>

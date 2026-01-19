@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <!-- Zorgt ervoor dat de pagina correct schaalt op verschillende schermformaten -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseMind – Dashboard</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Algemene en dashboard-specifieke styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <!-- Chart.js voor grafieken -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="dashboard.html" class="logo" aria-label="Go to dashboard">
+        <img
+            src="images/icons/PulseMind.png"
+            alt="PulseMind logo"
+            class="logo-icon"
+        >
+    </a>
+
+
+
+    <!-- Navigatiemenu -->
+    <nav class="nav">
+      <!-- Actieve pagina: Dashboard -->
+      <a href="dashboard.html" class="nav-btn active">
+        <img src="images/icons/icon-dashboard.svg" alt="">
+        Dashboard
+      </a>
+
+      <!-- Link naar dagelijkse check-in -->
+      <a href="checklist.html" class="nav-btn">
+        <img src="images/icons/icon-daily_check_in.svg" alt="">
+        Daily Check-in
+      </a>
+
+      <!-- Link naar profielpagina -->
+      <a href="account.html" class="nav-btn">
+        <img src="images/icons/icon-profile.svg" alt="">
+        Profile
+      </a>
+    </nav>
+  </header>
+
+  <!-- HOOFDINHOUD VAN DE PAGINA -->
+  <main class="page">
+    <div class="page-content">
+      <div class="dashboard">
+
+        <!-- LINKERKOLOM: statistieken en grafiek -->
+        <section class="dashboard-main">
+            
+          <!-- STATISTIEKEN SECTIE -->
+          <section class="stats-section">
+
+            <!-- Titel en filters -->
+            <div class="stats-header">
+              <h2 class="stats-title">Statics of your health</h2>
+
+              <!-- Filterknoppen voor tijdsperiode -->
+              <div class="stats-filters">
+                <button class="filter-btn active" data-range="365">12 months</button>
+                <button class="filter-btn" data-range="30">30 days</button>
+                <button class="filter-btn" data-range="7">7 days</button>
+              </div>
+            </div>
+
+            <!-- KAARTEN MET STATISTIEKEN -->
+            <div class="stats-cards">
+
+              <!-- Hartslag kaart -->
+              <div class="stat-card card card--sm">
+                <div class="stat-header">
+                  <span class="stat-label">Heart rate</span>
+                  <!-- Meer-opties knop -->
+                  <button class="stat-more">⋮</button>
+                </div>
+
+                <div class="stat-main">
+                  <div class="stat-value">
+                    <span class="value">80</span>
+                    <span class="unit">bpm</span>
+                  </div>
+
+                  <!-- Trend indicator -->
+                  <span class="trend-badge trend-up">↑ 10%</span>
+                </div>
+              </div>
+
+              <!-- Lichaamstemperatuur kaart -->
+              <div class="stat-card card card--sm">
+                <div class="stat-header">
+                  <span class="stat-label">Body temperature</span>
+                  <button class="stat-more">⋮</button>
+                </div>
+
+                <div class="stat-main">
+                  <div class="stat-value">
+                    <span class="value">37</span>
+                    <span class="unit">°C</span>
+                  </div>
+
+                  <span class="trend-badge trend-up">↑ 10%</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- GRAFIEK SECTIE -->
+          <section class="chart-section card card--lg">
+            <!-- Canvas voor Chart.js -->
+            <canvas id="healthChart"></canvas>
+          </section>
+        </section>
+
+        <!-- RECHTERKOLOM: weekoverzicht, check-in en AI-advies -->
+        <aside class="dashboard-sidebar">
+
+          <!-- WEEKOVERZICHT -->
+          <section class="week-review card card--lg">
+            <h3 class="week-title">Your progress this week</h3>
+
+            <!-- Overzicht van de dagen van de week -->
+            <div class="week-preview">
+
+              <!-- Maandag -->
+              <div class="week-day" data-day="Mo">
+                <span class="day-label">Mo</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Dinsdag -->
+              <div class="week-day" data-day="Tu">
+                <span class="day-label">Tu</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Woensdag -->
+              <div class="week-day" data-day="We">
+                <span class="day-label">We</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Donderdag (actieve stemming) -->
+              <div class="week-day" data-day="Th">
+                <span class="day-label">Th</span>
+                <div class="emoji-wrapper mood-heel-goed active">
+                  <img src="images/emoji/heel_goed_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Vrijdag -->
+              <div class="week-day" data-day="Fr">
+                <span class="day-label">Fr</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Zaterdag -->
+              <div class="week-day" data-day="Sa">
+                <span class="day-label">Sa</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+              <!-- Zondag -->
+              <div class="week-day" data-day="Su">
+                <span class="day-label">Su</span>
+                <div class="emoji-wrapper empty">
+                  <img src="images/emoji/empty_face.png" alt="">
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- DAGELIJKSE CHECK-IN -->
+          <section class="daily-checkin card card--md">
+            <div class="daily-checkin-card" id="dailyCheckin">
+
+              <!-- Status: check-in nog niet gedaan -->
+              <div class="checkin-state checkin-not-done">
+                <h3>Do your daily check-in</h3>
+                <p>It costs less than a minute!</p>
+
+                <!-- Link naar check-in pagina -->
+                <a href="checklist.html" class="primary-btn">
+                  <img src="images/icons/calendar-white.svg" alt="" />
+                  Do your Daily Check-in
+                </a>
+              </div>
+
+              <!-- Status: check-in al voltooid -->
+              <div class="checkin-state checkin-done hidden">
+                <h3>Check-in already completed</h3>
+                <p>Want to change something?</p>
+
+                <button class="secondary-btn">
+                  Edit today’s check-in
+                </button>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- PERSOONLIJK AI-ADVIES -->
+          <section class="ai-advice card card--sm">
+            <div class="daily-checkin-card ai-advice-card" id="ai-advice-card">
+
+              <!-- Status: nog geen AI-advies beschikbaar -->
+              <div class="checkin-state checkin-not-done">
+                <h3>Personal AI Advice</h3>
+                <p>Get personalized health insights based on your measurements and daily check-ins.</p>
+
+                <!-- Placeholder voor AI-advies -->
+                <div class="ai-advice-empty">
+                  <div class="ai-advice-placeholder">
+                    <p>Your personalized AI advice will appear here after your daily check-in.</p>
+                  </div>
+
+                  <!-- Knop om AI-advies op te halen -->
+                  <button type="button" class="primary-btn" id="ai-advice-btn">
+                    <img src="images/icons/calendar-white.svg" alt="" />
+                    Get your AI Advise
+                  </button>
+                  <div class="ai-advice-output hidden" id="ai-advice-output"></div>
+                  <p class="ai-advice-status" id="ai-advice-status" style="display: none;"></p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Dashboard JavaScript -->
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>
+```

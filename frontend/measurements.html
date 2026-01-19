@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseMind – Daily Check-in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+ 
+    <link rel="stylesheet" href="css/measurements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+</head>
+
+<body>
+
+<header class="header">
+    <a href="dashboard.html" class="logo" aria-label="Go to dashboard">
+        <img
+            src="images/icons/PulseMind.png"
+            alt="PulseMind logo"
+            class="logo-icon"
+        >
+    </a>
+
+
+
+    <!-- Navigatiemenu -->
+    <nav class="nav">
+      <!-- Actieve pagina: Dashboard -->
+      <a href="dashboard.html" class="nav-btn active">
+        <img src="images/icons/icon-dashboard.svg" alt="">
+        Dashboard
+      </a>
+
+      <!-- Link naar dagelijkse check-in -->
+      <a href="checklist.html" class="nav-btn">
+        <img src="images/icons/icon-daily_check_in.svg" alt="">
+        Daily Check-in
+      </a>
+
+      <!-- Link naar profielpagina -->
+      <a href="account.html" class="nav-btn">
+        <img src="images/icons/icon-profile.svg" alt="">
+        Profile
+      </a>
+    </nav>
+  </header>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- WEEK PREVIEW -->
+    <div class="week-preview">
+        <div class="week-day" data-day="Mo">
+            <span class="day-label">Mo</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Tu">
+            <span class="day-label">Tu</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="We">
+            <span class="day-label">We</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Th">
+            <span class="day-label">Th</span>
+            <div class="emoji-wrapper mood-heel-goed active">
+                <img src="images/emoji/heel_goed_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Fr">
+            <span class="day-label">Fr</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Sa">
+            <span class="day-label">Sa</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+
+        <div class="week-day" data-day="Su">
+            <span class="day-label">Su</span>
+            <div class="emoji-wrapper empty">
+                <img src="images/emoji/empty_face.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECK-IN CARD -->
+    <div class="checklist-card">
+        <!-- DATE PICKER -->
+        <div class="actions-row">
+
+            <a href="checklist.html" class="previous_step-btn btn">
+                <img src="images/icons/arrow.svg" alt="" class="btn-icon">
+                Previous step
+            </a>
+
+
+            <div class="date-picker">
+                <div class="date-input">
+
+                
+                    <img
+                        src="images/icons/calendar.svg"
+                        alt="Calendar"
+                        class="calendar-icon left"
+                    >
+
+
+                    <span class="date-display">Select date</span>
+                    <input type="date" id="date-field">
+                    
+                
+                    <svg
+                        class="calendar-arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 12 7"
+                        fill="none"
+                    >
+                        <path
+                            d="M0.833313 0.833344L5.83331 5.83334L10.8333 0.833344"
+                            stroke="#A3A7AD"
+                            stroke-width="1.66667"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+    
+        
+
+        
+<div class="measurements-inner">
+
+    <!-- ===============================
+         HEART RATE CARD
+         =============================== -->
+    <div class="measurement-heart-card" data-sensor="heart-rate">
+
+        <div class="measurement-main">
+
+            <div class="measurement-header">
+
+                <!-- LEFT -->
+                <div class="measurement-title">
+                    <div 
+                        class="heart-timer"
+                        id="heartRateTimer"
+                        style="width:64px; height:64px; aspect-ratio:1/1;"
+                        >
+                        <svg
+                            class="progress-ring"
+                            width="64"
+                            height="64"
+                            viewBox="0 0 64 64"
+                        >
+                            <!-- сірий фон -->
+                            <circle
+                            class="progress-ring__bg"
+                            cx="32"
+                            cy="32"
+                            r="28"
+                            />
+
+                            <!-- прогрес -->
+                            <circle
+                            class="progress-ring__circle"
+                            cx="32"
+                            cy="32"
+                            r="28"
+                            />
+                        </svg>
+
+                        <!-- іконка серця + секунди -->
+                        <div class="heart-icon">
+                            <img
+                            src="images/icons/heart.svg"
+                            alt=""
+                            style="width:20px; height:20px;"
+                            />
+                            <span id="heartTimerText">10s</span>
+                        </div>
+                        </div>
+
+
+                    <div class="measurement-info">
+                        <span class="measurement-label">Heart rate</span>
+
+                        <div class="measurement-value">
+                            <span class="value" id="heartRateValue">--</span>
+                            <span class="unit">bpm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="info-tooltip">
+                    <button class="info-btn" aria-label="Heart rate information">
+                        <img src="images/icons/info-circle.svg" alt="" class="info-icon">
+                    </button>
+
+                    <div class="tooltip-content">
+                        We collect heart rate data to help you monitor your health.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="measurement-footer">
+                <div class="measurement-status hidden" id="heartRateStatus"></div>
+
+                <div class="measurement-actions">
+                    <button class="primary-btn" id="startHeartRateBtn">
+                        <span class="loader hidden"></span>
+                        <img 
+                            src="images/icons/start_measurement.svg"
+                            alt=""
+                            class="btn_icon"
+                        >
+                        <span class="btn-label">Start measurement</span>
+                    </button>
+
+                    <button class="secondary-btn hidden" id="redoHeartRateBtn">
+                        <img 
+                            src="images/icons/redo.svg"
+                            alt=""
+                            class="btn_icon"
+                        >
+                        Redo measurement
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ===============================
+         TEMPERATURE CARD
+         =============================== -->
+    <div class="measurement-temperature-card" data-sensor="body-temperature">
+
+        <div class="measurement-main">
+
+            <div class="measurement-header">
+
+                <!-- LEFT -->
+                <div class="measurement-title">
+                    <div 
+                        class="temp-timer" 
+                        id="temperatureTimer"
+                        style="width:64px; height:64px; aspect-ratio:1/1;"
+                    >
+                        <svg
+                            class="progress-ring"
+                            width="64"
+                            height="64"
+                            viewBox="0 0 64 64"
+                        >
+                            <!-- сірий фон -->
+                            <circle
+                                class="progress-ring__bg"
+                                cx="32"
+                                cy="32"
+                                r="28"
+                            />
+
+                            <!-- зелений прогрес -->
+                            <circle
+                                class="progress-ring__circle"
+                                cx="32"
+                                cy="32"
+                                r="28"
+                            />
+                        </svg>
+
+                        <!-- градусник + секунди -->
+                        <div class="temp-icon">
+                            <!-- SVG ГРАДУСНИКА -->
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="thermometer-icon"
+                            >
+                                <path
+                                    d="M14.5 4.5C14.5 3.11929 13.3807 2 12 2C10.6193 2 9.5 3.11929 9.5 4.5V13.7578C8.29401 14.565 7.5 15.9398 7.5 17.5C7.5 19.9853 9.51472 22 12 22C14.4853 22 16.5 19.9853 16.5 17.5C16.5 15.9398 15.706 14.565 14.5 13.7578V4.5Z"
+                                    stroke="#D6BBFB"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M12 18.5C12.5523 18.5 13 18.0523 13 17.5C13 16.9477 12.5523 16.5 12 16.5C11.4477 16.5 11 16.9477 11 17.5C11 18.0523 11.4477 18.5 12 18.5Z"
+                                    stroke="#D6BBFB"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+
+                            <span id="tempTimerText">30s</span>
+                        </div>
+                    </div>
+
+
+                    <div class="measurement-info">
+                        <span class="measurement-label">Body temperature</span>
+
+                        <div class="measurement-value">
+                            <span class="value" id="temperatureValue">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="info-tooltip">
+                    <button class="info-btn" aria-label="Body temperature information">
+                        <img src="images/icons/info-circle.svg" alt="" class="info-icon">
+                    </button>
+
+                    <div class="tooltip-content">
+                        We measure your body temperature to monitor potential health changes.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="measurement-footer">
+                <div class="measurement-status hidden" id="temperatureStatus"></div>
+
+                <div class="measurement-actions">
+                    <button class="primary-btn" id="startTemperatureBtn">
+                        <span class="loader hidden"></span>
+                        <img 
+                            src="images/icons/start_measurement.svg"
+                            alt=""
+                            class="btn_icon"
+                        >
+                        <span class="btn-label">Start measurement</span>
+                    </button>
+
+                    <button class="secondary-btn hidden" id="redoTemperatureBtn">
+                        <img 
+                            src="images/icons/redo.svg"
+                            alt=""
+                            class="btn_icon"
+                        >
+                        Redo measurement
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- CTA -->
+    <div class="checklist-cta">
+        <button class="continue-btn btn" id="completeCheckinBtn">
+            <img 
+                src="images/icons/complete-check-in.svg"
+                alt=""
+                class="btn_icon"
+            >
+            Complete My Check-in
+        </button>
+
+        <button class="skip-btn btn" id="skipMeasurementsBtn">
+            <img 
+                src="images/icons/skip-measurements.svg"
+                alt=""
+                class="btn_icon"
+            >
+            Skip Measurements
+        </button>
+    </div>
+<script src="js/measurements.js" defer></script>
+</body>
+</html>

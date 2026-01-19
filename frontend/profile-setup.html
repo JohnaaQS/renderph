@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseMind - Calibrate Your Profile</title>
+    <link rel="stylesheet" href="css/auth-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="profile-setup-body">
+<div class="profile-setup-container">
+
+    <div class="profile-header">
+        <div class="profile-logo">
+            <i class="fas fa-fingerprint"></i>
+            <span>PulseMind - Calibrate Your Profile</span>
+        </div>
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i> Go back
+        </button>
+    </div>
+
+    
+        <div class="profile-title-section">
+            <h1>Let's calibrate your profile.</h1>
+            <p>To give you accurate stress insights, we need a baseline.</p>
+            <p class="privacy-note">This info is kept private.</p>
+            <p class="auth-description" id="status" style="display: none;"></p>
+            <p class="auth-description" id="device-key-output" style="display: none;"></p>
+        </div>
+            
+        <div class="profile-form-container">
+        <form class="profile-form" id="profile-form">
+
+            <!-- Birth date -->
+            <div class="form-group">
+                <label for="birth-date">Birth date</label>
+                <div class="date-input-wrapper">
+                    <input type="date" id="birth-date" required>
+                </div>
+            </div>
+            <!-- Name and last name-->
+            <div class="form-row name-row">
+                <div class="form-group">
+                    <label for="first-name">First name</label>
+                    <input type="text" id="first-name" placeholder="John" required>
+                </div>
+
+            <div class="form-group">
+                <label for="last-name">Last name</label>
+                <input type="text" id="last-name" placeholder="Doe" required>
+            </div>
+        </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="gender" value="man" checked>
+                        <span class="radio-btn"></span> Man
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="gender" value="woman">
+                        <span class="radio-btn"></span> Woman
+                    </label>
+                </div>
+            </div>
+
+            <!-- Height / Weight / BMI -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="height" placeholder="175">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="weight" placeholder="70">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>BMI (auto)</label>
+                    <div class="bmi-display">
+                        <span id="bmi-value">22.9</span>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Activity Life -->
+                <div class="form-group">
+                    <label>Activity Life</label>
+                    <div class="activity-buttons">
+                        <button type="button" class="activity-btn" data-activity="sedentary">
+                            <i class="fas fa-couch"></i> Sedentary
+                        </button>
+                        <button type="button" class="activity-btn active" data-activity="light">
+                            <i class="fas fa-walking"></i> Light active
+                        </button>
+                        <button type="button" class="activity-btn" data-activity="moderate">
+                            <i class="fas fa-running"></i> Moderate
+                        </button>
+                        <button type="button" class="activity-btn" data-activity="active">
+                            <i class="fas fa-dumbbell"></i> Active
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Average Daily Sleep -->
+                <div class="form-group">
+                    <label>Average Daily Sleep (hours)</label>
+                    <div class="sleep-slider-container">
+                        <input
+                            type="range"
+                            class="sleep-slider"
+                            id="sleep-slider"
+                            min="1"
+                            max="12"
+                            value="6"
+                            step="1"
+                        >
+
+                        <!-- Waardes onder de slider -->
+                        <div class="sleep-scale">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                            <span>11</span>
+                            <span>12</span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i> Save Personal Data
+            </button>
+
+            <!-- Privacy text EXACT zoals Figma -->
+            <p class="form-footer-note">
+                Your data is secure and only used to personalize your experience, read our <u>Privacy Policy</u>.
+            </p>
+
+        </form>
+    </div>
+</div>
+
+    <script src="js/app.js" defer></script>
+    <script src="js/profile-setup.js" defer></script>
+
+</body>
+</html>

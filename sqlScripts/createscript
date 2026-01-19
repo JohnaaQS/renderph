@@ -1,0 +1,67 @@
+-- Database type
+-- Postgresql
+
+-- Database name
+-- personal_health
+
+-- ============================================
+-- DROP TABLES IF THEY EXIST
+-- ============================================
+
+DROP TABLE IF EXISTS daily_logs CASCADE;
+DROP TABLE IF EXISTS arduino_measurements CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+
+-- ============================================
+-- CREATE USERS TABLE
+-- ============================================
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+
+    first_name VARCHAR(100),
+    last_name  VARCHAR(100),
+    username  VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+
+    date_of_birth DATE CHECK (date_of_birth <= CURRENT_DATE),
+    leeftijd INT CHECK (leeftijd > 0 AND leeftijd < 120),
+    geslacht VARCHAR(10) CHECK (geslacht IN ('man','vrouw','anders')),
+    lengte_cm INT CHECK (lengte_cm > 0),
+    gewicht_kg DECIMAL(5,2) CHECK (gewicht_kg > 0),
+    levensstijl VARCHAR(20) CHECK (levensstijl IN ('sedentair','matig actief','actief')),
+
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ============================================
+-- CREATE ARDUINO MEASUREMENTS TABLE
+-- ============================================
+
+CREATE TABLE arduino_measurements (
+    measurement_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    temperatuur_c DECIMAL(4,2),
+    hartslag_bpm INT,
+    hrv_ms INT,
+    gsr INT,
+    timestamp TIMESTAMP DEFAULT NOW()
+);
+
+-- ============================================
+-- CREATE DAILY LOGS TABLE
+-- ============================================
+
+CREATE TABLE daily_logs (
+    log_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    uren_geslapen DECIMAL(4,2) CHECK (uren_geslapen >= 0 AND uren_geslapen <= 24),
+    gevoel VARCHAR(20) CHECK (gevoel IN ('heel slecht','slecht','neutraal','goed','heel goed')),
+    activiteiten JSONB,
+    note TEXT,
+    date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+
+    CONSTRAINT unique_user_date UNIQUE (user_id, date)
+);
