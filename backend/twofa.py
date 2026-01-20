@@ -29,6 +29,7 @@ ELASTICEMAIL_API_URL = os.getenv(
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
 SMTP_TIMEOUT = float(os.getenv("SMTP_TIMEOUT", "10"))
+SMTP_USE_STARTTLS = os.getenv("SMTP_USE_STARTTLS", "0") == "1"
 EMAIL_HTTP_TIMEOUT = float(os.getenv("EMAIL_HTTP_TIMEOUT", "10"))
 
 
@@ -174,10 +175,17 @@ def _send_2fa_email_smtp(to_email: str, code: str) -> bool:
         msg["Subject"] = "PulseMind – Verification Code"
         msg["From"] = EMAIL_SENDER
         msg["To"] = to_email
-
-        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=SMTP_TIMEOUT) as server:
-            server.login(EMAIL_SENDER, EMAIL_SENDER_PASS)
-            server.send_message(msg)
+        if SMTP_USE_STARTTLS:
+            with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=SMTP_TIMEOUT) as server:
+                server.ehlo()
+                server.starttls()
+                server.ehlo()
+                server.login(EMAIL_SENDER, EMAIL_SENDER_PASS)
+                server.send_message(msg)
+        else:
+            with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=SMTP_TIMEOUT) as server:
+                server.login(EMAIL_SENDER, EMAIL_SENDER_PASS)
+                server.send_message(msg)
 
         return True
     except Exception as e:
